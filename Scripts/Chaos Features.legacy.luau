@@ -7,7 +7,7 @@ local function normal(character)
 	end
 	game:GetService("Lighting").FogStart = 100
 	game:GetService("Lighting").FogEnd = 500
-	game:GetService("Lighting").FogColor = Color3.fromRGB(200, 200, 200)
+	game:GetService("Lighting").FogColor = Color3.fromRGB(200, 200, 200)  
 	print("normal")
 end
 	
@@ -38,9 +38,9 @@ end
 
 local function darkness(character)
 	game:GetService("Lighting").FogStart = 0
-	game:GetService("Lighting").FogEnd = 35
+	game:GetService("Lighting").FogEnd = 20
 	game:GetService("Lighting").FogColor = Color3.fromRGB(50, 50, 50)
-	print("fog")
+	print("darkness")
 end
 
 ------------------------------------------------------------------------------------------------
@@ -50,14 +50,14 @@ while true do
 	local functionList = {low_speed, high_speed, darkness}
 	local randomGenerator = Random.new()
 	local ChaosFunction = functionList[randomGenerator:NextInteger(1, #functionList)]
-	task.wait(10)
+	task.wait(60)
 	for _, player in ipairs(game.Players:GetPlayers()) do
 		local character = player.Character
 		if character then
 			ChaosFunction(character)
 		end
 	end
-	task.wait(10)
+	task.wait(60)
 	for _, player in ipairs(game.Players:GetPlayers()) do
 		local character = player.Character
 		if character then
@@ -65,6 +65,4 @@ while true do
 		end
 	end
 end
-
-
 
