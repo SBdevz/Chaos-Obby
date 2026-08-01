@@ -4,7 +4,7 @@ local Players = game:GetService("Players")
 local checkpointsFolder = Workspace:WaitForChild("Checkpoints")
 
 Players.PlayerAdded:Connect(function(player)
-	player.RespawnLocation = game.Workspace.Structures:WaitForChild("Red Spawn")
+	player.RespawnLocation = game.Workspace.Spawnpoints:WaitForChild("LobbySpawn")
 end)
 
 local function setupCheckpoint(spawnPoint)
