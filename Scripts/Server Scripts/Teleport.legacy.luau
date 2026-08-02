@@ -14,6 +14,10 @@ local function teleportPlayerToSavedCheckpoint(player)
 	local character = player.Character
 	if not character then return end
 
+	local rootPart = character.PrimaryPart or character:FindFirstChild("HumanoidRootPart")
+	local humanoid = character:FindFirstChildOfClass("Humanoid")
+	if not rootPart or not humanoid then return end
+
 	local key = "Player_" .. player.UserId
 	local success, savedSpawnName = pcall(function()
 		return DataStore:GetAsync(key)
@@ -33,7 +37,17 @@ local function teleportPlayerToSavedCheckpoint(player)
 
 	if targetPart then
 		local targetCFrame = targetPart:IsA("Model") and targetPart:GetPivot() or targetPart.CFrame
-		character:PivotTo(targetCFrame + Vector3.new(0, 3, 0))
+
+		rootPart.Anchored = true
+		character:PivotTo(targetCFrame + Vector3.new(0, 4, 0))
+
+		rootPart.AssemblyLinearVelocity = Vector3.zero
+		rootPart.AssemblyAngularVelocity = Vector3.zero
+		humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+
+		task.wait(0.1)
+		rootPart.Anchored = false
+
 		player:SetAttribute("LevelRed", true)
 	else
 		warn("Could not find checkpoint target part: " .. tostring(targetCheckpointName))

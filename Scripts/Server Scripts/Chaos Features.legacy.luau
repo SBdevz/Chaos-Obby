@@ -1,3 +1,4 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local function normal(character)
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
@@ -9,7 +10,7 @@ local function normal(character)
 	game:GetService("Lighting").FogColor = Color3.fromRGB(200, 200, 200)  
 	print("normal")
 end
-	
+
 local function low_speed(character)
 	local humanoid = character:FindFirstChildOfClass("Humanoid")
 	if humanoid then
@@ -33,6 +34,12 @@ local function darkness(character)
 	print("darkness")
 end
 
+local chaosNames = {
+	[low_speed] = "Low Speed",
+	[high_speed] = "High Speed",
+	[darkness] = "Darkness"
+}
+
 local currentChaos = normal
 
 local function applyChaos(player, character)
@@ -49,8 +56,23 @@ local function newPlayer(player)
 		task.wait(0.1)
 		applyChaos(player, character)
 	end)
+
+	player:GetAttributeChangedSignal("LevelRed"):Connect(function()
+		if player.Character then
+			applyChaos(player, player.Character)
+		end
+	end)
+
 	if player.Character then
 		applyChaos(player, player.Character)
+	end
+end
+
+local function timer(seconds, status)
+	ReplicatedStorage:SetAttribute("ChaosText", status)
+	for i = seconds, 1, -1 do
+		ReplicatedStorage:SetAttribute("TimeLeft", i)
+		task.wait(1)
 	end
 end
 
@@ -64,7 +86,9 @@ while true do
 	local functionList = {low_speed, high_speed, darkness}
 	local randomGenerator = Random.new()
 	local ChaosFunction = functionList[randomGenerator:NextInteger(1, #functionList)]
-	task.wait(240)
+
+	timer(240, "Next Chaos Event In:")
+
 	currentChaos = ChaosFunction
 	for _, player in ipairs(game.Players:GetPlayers()) do
 		local character = player.Character
@@ -72,7 +96,10 @@ while true do
 			applyChaos(player, character)
 		end
 	end
-	task.wait(60)
+
+	local eventName = chaosNames[ChaosFunction] or "Chaos Event"
+	timer(60, eventName .. " Event Ends In:")
+
 	currentChaos = normal
 	for _, player in ipairs(game.Players:GetPlayers()) do
 		local character = player.Character
