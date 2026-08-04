@@ -1,4 +1,5 @@
 # Chaos Obby
+
 A simple Roblox game where you try to complete an obstacle course without dying to constantly new challenges. <br>
 An obby that seems simple until you are hit with a challenge every other minute. Will you finish the obby, or will the chaos make you quit? <br>
 
@@ -8,6 +9,12 @@ An obby that seems simple until you are hit with a challenge every other minute.
 -------------------------------------------------------------------------------------------------------------------------------<br>
 <br>
 Game Link: https://www.roblox.com/games/121137161104139/Chaos-Obby <br>
+<br>
+Quick Start: <br>
+-Download Roblox based on your platform (available on pc, mobile, console, vr) https://www.roblox.com/download <br>
+-Sign in or create an account<br>
+-Open the game link provided above<br>
+-Launch in Roblox <br>
 <br>
 How to Play: <br>
 -When you spawn into the lobby, walk into the teleport that says current level  <br>
