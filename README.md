@@ -11,6 +11,7 @@ An obby that seems simple until you are hit with a challenge every other minute.
 Game Link: https://www.roblox.com/games/121137161104139/Chaos-Obby <br>
 <br>
 Quick Start: <br>
+-⚠️ Due to Roblox Regulations, until the game reaches 500 eligible players, the game will have to remain for users verified 16+ ⚠️ <br>
 -Download Roblox based on your platform (available on pc, mobile, console, vr) https://www.roblox.com/download <br>
 -Sign in or create an account<br>
 -Open the game link provided above<br>
